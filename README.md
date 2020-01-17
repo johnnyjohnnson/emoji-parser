@@ -9,8 +9,10 @@ import emojiParser
 emojiParser = emojiParser(unicodeEmojiVersion=12.1)
 
 emojiParser.parseStringObjet('this parser makes my life soo much easier ✌️ 👨🏼‍🦱 👩🏾‍🦰 😂')
+```
 
 ## it returns the following dictionary:
+
 {'emojis': [
             #1st emoji
             {
