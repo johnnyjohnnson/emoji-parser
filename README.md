@@ -99,7 +99,7 @@ emojiParser.parseTweetObjet(elonsTweet)
 
 ## it returns a modified version of the Tweet-Object:
 the modification is an update of the 'entities'-dictionary inside the Tweet-Object "elonsTweet". Since emojis could be viewed as some kind of entity, the 'entities'-dictionary gets updated by inserting an 'emojis'-field. This newly inserted 'emojis'-field contains every single emoji contained in that Tweet which was passed to the parseTweetObject-method.
-´´´python
+```python
 
 #now elonsTweet looks like this:
 
