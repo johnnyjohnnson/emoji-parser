@@ -3,4 +3,8 @@ this Emoji Parser takes a string as input and extracts all emojis contained insi
 
 # Usage with string-Objects
 ```python
-import blablabla
+import emojiParser
+
+emojiParser = emojiParser(unicodeEmojiVersion=12.1)
+
+string = 'lfjadjf jadjf 🤲 djfhasklhf 👨🏼‍🦱 sjfllfjgjgjkgjfkgjkgj 👩🏾‍🦰 afakjgfggjhg'
