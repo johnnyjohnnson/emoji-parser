@@ -8,7 +8,7 @@ import emojiParser
 
 emojiParser = emojiParser()
 #it defaults to Emoji-Unicode-Version 12.1
-emojiParser.parseStringObjet('this parser makes my life soo much easier ✌️ 👨🏼‍🦱 👩🏾‍🦰 😂')
+emojiParser.parseStringObject('this parser makes my life soo much easier ✌️ 👨🏼‍🦱 👩🏾‍🦰 😂')
 ```
 
 ## it returns the following dictionary:
@@ -94,7 +94,7 @@ elonsTweet = {
 
 emojiParser = emojiParser() 
 #it defaults to Emoji-Unicode-Version 12.1
-emojiParser.parseTweetObjet(elonsTweet)
+emojiParser.parseTweetObject(elonsTweet)
 ```
 
 ## it returns a modified version of the Tweet-Object:
