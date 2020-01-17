@@ -1,5 +1,5 @@
 # emoji-parser
-this Emoji Parser takes a string as input and extracts all emojis contained inside that string.  It returns a list of dictionaries. Each dictionary represents one emoji from that input-string.
+this Emoji Parser takes a string or a Tweet-object as input and extracts all emojis contained inside that string/Tweet. It returns a dictionary with a list of dictionaries. Each dictionary of that list represents one emoji from that input-string or Tweet.
 
 # Usage with string-Objects
 ```python
