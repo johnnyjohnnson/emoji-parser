@@ -8,4 +8,4 @@ import emojiParser
 
 emojiParser = emojiParser(unicodeEmojiVersion=12.1)
 
-emojiParser.parseStringObjet('this parser makes my life soo much easier 🤲 👨🏼‍🦱 👩🏾‍🦰 😂')
+emojiParser.parseStringObjet('this parser makes my life soo much easier ✌️ 👨🏼‍🦱 👩🏾‍🦰 😂')
