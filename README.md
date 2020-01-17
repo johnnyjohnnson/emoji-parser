@@ -4,9 +4,10 @@ this Emoji Parser takes a string or a Tweet-object as input and extracts all emo
 # Usage with string-Objects
 ```python
 import emojiParser
-#it defaults to Emoji-Unicode-Version 12.1
-emojiParser = emojiParser()
 
+
+emojiParser = emojiParser()
+#it defaults to Emoji-Unicode-Version 12.1
 emojiParser.parseStringObjet('this parser makes my life soo much easier ✌️ 👨🏼‍🦱 👩🏾‍🦰 😂')
 ```
 
@@ -91,8 +92,8 @@ elonsTweet = {
  }
 
 
-#it defaults to Emoji-Unicode-Version 12.1
 emojiParser = emojiParser() 
+#it defaults to Emoji-Unicode-Version 12.1
 emojiParser.parseTweetObjet(elonsTweet)
 ```
 
