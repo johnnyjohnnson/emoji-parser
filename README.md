@@ -14,7 +14,7 @@ emojiParser.parseStringObjet('this parser makes my life soo much easier ✌️ �
 ## it returns the following dictionary:
 ```python
 {'emojis': [
-            #1st emoji
+            #1st emoji as a dictionary
             {
                 'text_string' : '✌️',
                 'text_unicode': '270c fe0f',                
@@ -23,9 +23,9 @@ emojiParser.parseStringObjet('this parser makes my life soo much easier ✌️ �
                 'group'       : 'People & Body',
                 'subgroup'    : 'hand-fingers-partial',
                 'indices'     : [42, 43]
-             },
+            },
              
-            #2nd emoji
+            #2nd emoji as a dictionary
             {
                 'text_string' : '👨🏼‍🦱',
                 'text_unicode': '1f468 1f3fc 200d 1f9b1',
@@ -34,10 +34,10 @@ emojiParser.parseStringObjet('this parser makes my life soo much easier ✌️ �
                 'group'       : 'People & Body',
                 'subgroup'    : 'person',
                 'indices'     : [45, 48]
-             },
-             
-             #3rd emoji
-             {
+            },
+            
+            #3rd emoji as a dictionary
+            {
                 'text_string' : '👩🏾‍🦰',
                 'text_unicode': '1f469 1f3fe 200d 1f9b0',
                 'text_bytes'  : b'\xf0\x9f\x91\xa9\xf0\x9f\x8f\xbe\xe2\x80\x8d\xf0\x9f\xa6\xb0',
@@ -45,11 +45,17 @@ emojiParser.parseStringObjet('this parser makes my life soo much easier ✌️ �
                 'group'       : 'People & Body',
                 'subgroup'    : 'person',
                 'indices'     : [50, 53]
-             },
-            {'emoji_name': 'face with tears of joy',
-             'group': 'Smileys & Emotion',
-             'indices': [55],
-             'subgroup': 'face-smiling',
-             'text_bytes': b'\xf0\x9f\x98\x82',
-             'text_string': '😂',
-             'text_unicode': '1f602'}]}
+            },
+            
+            #4th emoji as a dictionary
+            {
+                'text_string': '😂',
+                'text_unicode': '1f602',
+                'text_bytes': b'\xf0\x9f\x98\x82',
+                'emoji_name': 'face with tears of joy',
+                'group': 'Smileys & Emotion',
+                'subgroup': 'face-smiling',
+                'indices': [55]
+            }
+           ]
+}
