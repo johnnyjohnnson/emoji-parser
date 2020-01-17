@@ -60,14 +60,41 @@ emojiParser.parseStringObjet('this parser makes my life soo much easier ✌️ �
            ]
 }
 ```
-# Usage with string-Objects
+# Usage with Tweet-Objects
 ```python
 import emojiParser
 
 #it defaults to Emoji-Unicode-Version 12.1
 emojiParser = emojiParser()
 
-emojiParser.parseTweetObjet(tweetObject)
+elonsTweet = {
+ 'created_at': 'Wed Jan 01 06:50:06 +0000 2020',
+ 'id': 1212264717617639424,
+ 'id_str': '1212264717617639424',
+ 'full_text': 'Congratulations Tesla &amp; SpaceX on great 2019! You rock!! Looking forward to epic 2020 ♥️🚀🛰🚘☀️',
+ 'truncated': False,
+ 'display_text_range': [0, 97],
+ 'entities': {'hashtags': [], 'symbols': [], 'user_mentions': [], 'urls': []},
+ 'source': '<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>',
+ 'in_reply_to_status_id': None,
+ 'in_reply_to_status_id_str': None,
+ 'in_reply_to_user_id': None,
+ 'in_reply_to_user_id_str': None,
+ 'in_reply_to_screen_name': None,
+ 'user': {'id': 44196397, 'id_str': '44196397'},
+ 'geo': None,
+ 'coordinates': None,
+ 'place': None,
+ 'contributors': None,
+ 'is_quote_status': False,
+ 'retweet_count': 8375,
+ 'favorite_count': 168980,
+ 'favorited': False,
+ 'retweeted': False,
+ 'lang': 'en'
+}
+ 
+emojiParser.parseTweetObjet(elonsTweet)
 ```
 
 ## it returns the following dictionary:
