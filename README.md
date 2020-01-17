@@ -5,6 +5,7 @@ this Emoji Parser takes a string as input and extracts all emojis contained insi
 ```python
 import emojiParser
 
+
 emojiParser = emojiParser(unicodeEmojiVersion=12.1)
 
-string = 'lfjadjf jadjf 🤲 djfhasklhf 👨🏼‍🦱 sjfllfjgjgjkgjfkgjkgj 👩🏾‍🦰 afakjgfggjhg'
+emojiParser.parseStringObjet('this parser makes my life soo much easier 🤲 👨🏼‍🦱 👩🏾‍🦰 😂')
