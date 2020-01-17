@@ -48,13 +48,13 @@ emojiParser.parseStringObject('this parser makes my life soo much easier ✌️ 
             
             #4th emoji as a dictionary
             {
-                'text_string': '😂',
+                'text_string' : '😂',
                 'text_unicode': '1f602',
-                'text_bytes': b'\xf0\x9f\x98\x82',
-                'emoji_name': 'face with tears of joy',
-                'group': 'Smileys & Emotion',
-                'subgroup': 'face-smiling',
-                'indices': [55]
+                'text_bytes'  : b'\xf0\x9f\x98\x82',
+                'emoji_name'  : 'face with tears of joy',
+                'group'       : 'Smileys & Emotion',
+                'subgroup'    : 'face-smiling',
+                'indices'     : [55]
             }
            ]
 }
