@@ -115,6 +115,7 @@ elonsTweet = {
             'symbols': [],
             'user_mentions': [],
             'urls': [],
+            #this is the inserted 'emojis'-field into the 'entities'-dictionary
             'emojis': [
                         #1st emoji as a dictionary
                         {
@@ -127,15 +128,15 @@ elonsTweet = {
                         'indices'     : [0],
                         },
                         
-                        #1st emoji as a dictionary
+                        #2nd emoji as a dictionary
                         {
-                        'text_string': '🎶',
+                        'text_string' : '🎶',
                         'text_unicode': '1f3b6',
-                        'text_bytes': b'\xf0\x9f\x8e\xb6',
-                        'emoji_name': 'musical notes',
-                        'group': 'Objects',
-                        'subgroup': 'music',
-                        'indices': [28]
+                        'text_bytes'  : b'\xf0\x9f\x8e\xb6',
+                        'emoji_name'  : 'musical notes',
+                        'group'       : 'Objects',
+                        'subgroup'    : 'music',
+                        'indices'     : [28]
                         }
                       ]
              },
