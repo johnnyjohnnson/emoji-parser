@@ -68,12 +68,12 @@ import emojiParser
 emojiParser = emojiParser()
 
 elonsTweet = {
- 'created_at': 'Wed Jan 01 06:50:06 +0000 2020',
- 'id': 1212264717617639424,
- 'id_str': '1212264717617639424',
- 'full_text': 'Congratulations Tesla &amp; SpaceX on great 2019! You rock!! Looking forward to epic 2020 ♥️🚀🛰🚘☀️',
+ 'created_at': 'Fri Jan 10 09:57:08 +0000 2020',
+ 'id': 1215573277726273536,
+ 'id_str': '1215573277726273536',
+ 'full_text': '🎶 Toss a coin to ur Witcher 🎶',
  'truncated': False,
- 'display_text_range': [0, 97],
+ 'display_text_range': [0, 29],
  'entities': {'hashtags': [], 'symbols': [], 'user_mentions': [], 'urls': []},
  'source': '<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>',
  'in_reply_to_status_id': None,
@@ -87,12 +87,12 @@ elonsTweet = {
  'place': None,
  'contributors': None,
  'is_quote_status': False,
- 'retweet_count': 8375,
- 'favorite_count': 168980,
+ 'retweet_count': 29090,
+ 'favorite_count': 216912,
  'favorited': False,
  'retweeted': False,
  'lang': 'en'
-}
+ }
  
 emojiParser.parseTweetObjet(elonsTweet)
 ```
