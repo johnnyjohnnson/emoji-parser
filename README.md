@@ -38,7 +38,7 @@ emojiParser.parseStringObjet('this parser makes my life soo much easier ✌️ �
              
              #3rd emoji
              {
-                'text_string' : '👩🏾\u200d🦰',
+                'text_string' : '👩🏾‍🦰',
                 'text_unicode': '1f469 1f3fe 200d 1f9b0',
                 'text_bytes'  : b'\xf0\x9f\x91\xa9\xf0\x9f\x8f\xbe\xe2\x80\x8d\xf0\x9f\xa6\xb0',
                 'emoji_name'  : 'woman: medium-dark skin tone, red hair',
