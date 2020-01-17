@@ -97,4 +97,54 @@ emojiParser = emojiParser()
 emojiParser.parseTweetObjet(elonsTweet)
 ```
 
-## it returns the following dictionary:
+## it returns a modified version of the Tweet-Object:
+the modification is an update of the 'entities'-dictionary inside the Tweet-Object "elonsTweet". Since emojis could be viewed as some kind of entity, the 'entities'-dictionary gets updated by inserting an 'emojis'-field. This newly inserted 'emojis'-field contains every single emoji contained in that Tweet which was passed to the parseTweetObject-method.
+´´´python
+
+#now elonsTweet looks like this:
+
+elonsTweet = {
+ 'created_at': 'Fri Jan 10 09:57:08 +0000 2020',
+ 'id': 1215573277726273536,
+ 'id_str': '1215573277726273536',
+ 'full_text': '🎶 Toss a coin to ur Witcher 🎶',
+ 'truncated': False,
+ 'display_text_range': [0, 29],
+ 'entities': {
+            'hashtags': [],
+            'symbols': [],
+            'user_mentions': [],
+            'urls': [],
+            'emojis': [
+                        {
+                        'text_bytes': b'\xf0\x9f\x8e\xb6',
+                        'text_string': '🎶',
+                        'text_unicode': '1f3b6',
+                        'indices': [0],
+                        'emoji_name': 'musical notes',
+                        'group': 'Objects',
+                        'subgroup': 'music'},
+   {'text_bytes': b'\xf0\x9f\x8e\xb6',
+    'text_string': '🎶',
+    'text_unicode': '1f3b6',
+    'indices': [28],
+    'emoji_name': 'musical notes',
+    'group': 'Objects',
+    'subgroup': 'music'}]},
+ 'source': '<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>',
+ 'in_reply_to_status_id': None,
+ 'in_reply_to_status_id_str': None,
+ 'in_reply_to_user_id': None,
+ 'in_reply_to_user_id_str': None,
+ 'in_reply_to_screen_name': None,
+ 'user': {'id': 44196397, 'id_str': '44196397'},
+ 'geo': None,
+ 'coordinates': None,
+ 'place': None,
+ 'contributors': None,
+ 'is_quote_status': False,
+ 'retweet_count': 29090,
+ 'favorite_count': 216912,
+ 'favorited': False,
+ 'retweeted': False,
+ 'lang': 'en'}
