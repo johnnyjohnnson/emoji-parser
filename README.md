@@ -116,35 +116,29 @@ elonsTweet = {
             'user_mentions': [],
             'urls': [],
             'emojis': [
+                        #1st emoji as a dictionary
                         {
-                        'text_bytes': b'\xf0\x9f\x8e\xb6',
+                        'text_string' : '🎶',
+                        'text_unicode': '1f3b6',
+                        'text_bytes'  : b'\xf0\x9f\x8e\xb6',
+                        'emoji_name'  : 'musical notes',
+                        'group'       : 'Objects',
+                        'subgroup'    : 'music',
+                        'indices'     : [0],
+                        },
+                        
+                        #1st emoji as a dictionary
+                        {
                         'text_string': '🎶',
                         'text_unicode': '1f3b6',
-                        'indices': [0],
+                        'text_bytes': b'\xf0\x9f\x8e\xb6',
                         'emoji_name': 'musical notes',
                         'group': 'Objects',
-                        'subgroup': 'music'},
-   {'text_bytes': b'\xf0\x9f\x8e\xb6',
-    'text_string': '🎶',
-    'text_unicode': '1f3b6',
-    'indices': [28],
-    'emoji_name': 'musical notes',
-    'group': 'Objects',
-    'subgroup': 'music'}]},
+                        'subgroup': 'music',
+                        'indices': [28]
+                        }
+                      ]
+             },
  'source': '<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>',
- 'in_reply_to_status_id': None,
- 'in_reply_to_status_id_str': None,
- 'in_reply_to_user_id': None,
- 'in_reply_to_user_id_str': None,
- 'in_reply_to_screen_name': None,
- 'user': {'id': 44196397, 'id_str': '44196397'},
- 'geo': None,
- 'coordinates': None,
- 'place': None,
- 'contributors': None,
- 'is_quote_status': False,
- 'retweet_count': 29090,
- 'favorite_count': 216912,
- 'favorited': False,
- 'retweeted': False,
- 'lang': 'en'}
+ ...
+ }
