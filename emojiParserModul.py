@@ -309,28 +309,37 @@ class emojiParser():
             potentialEmojiUnicode der hex-Wert des CodePoints des potentiellen Emojis
             (Achtung: ist ein String)
             """
-            potentialEmojiUnicode = potentialEmojiUnicode[2:]
-            
-            self.partialEntityDict['emojis'][-1]['text_bytes']   += potentialEmojiBytes
-            self.partialEntityDict['emojis'][-1]['text_string']  += potentialEmojiBytes.decode()
-            self.partialEntityDict['emojis'][-1]['text_unicode'] += ' ' + potentialEmojiUnicode
-            #
-            #Indizes aktualisieren
-            try:
-                #versuchen das zweite 'indices'-Element der Liste mit dem richtigen 
-                #Index zu versehen. 'indices'-Liste hat ein start und ein stop Element
-                self.partialEntityDict['emojis'][-1]['indices'][1] = Index
-            except IndexError:
-                #wenn die Liste aber bislang nur 1 Element lang ist wird ein IndexError kommen
-                self.partialEntityDict['emojis'][-1]['indices'].append(Index)
-            #
             #emoji_name/group/subgroup aktualisieren
-            potentialEmojiUnicode = self.partialEntityDict['emojis'][-1]['text_unicode']
+            #potentialEmojiUnicode = zB '0x1f600'
+            potentialEmojiUnicode = potentialEmojiUnicode[2:]
             try:
-                __updateWithEmojiKeyboardData(potentialEmojiUnicode)
+                if potentialEmojiUnicode == '200d':
+                    #wenn es sich um einen ZWJ handelt, dann die Funktion weiter durchlaufen.
+                    pass
+                else:
+                    __updateWithEmojiKeyboardData(
+                            #die nächste Zeile ist der alte Unicode-Wert + das neue potentielle Emoji/ZWJ/VS
+                            self.partialEntityDict['emojis'][-1]['text_unicode'] + ' ' + potentialEmojiUnicode
+                            )
             except KeyError:
-                #der Key im self.KEYBOARD_EMOJIS existiert nicht, wir machen nichts...
-                pass
+                #der Key im self.KEYBOARD_EMOJIS existiert nicht, das bedeutet der Tweet enthält
+                #emojis, die so nicht existieren, zB das hier würde als EIN Emoji erkannt,
+                #was aber nicht existiert: 🖋️🙂 aber durch den VS nach dem Pen dieses Verhalten auslöst  
+                #also muss ein neues Emoji in das self.partialEntityDict eingefügt werden
+                _createNewEmojiEntity(potentialEmojiBytes, '0x' + potentialEmojiUnicode, Index)
+            else:
+                self.partialEntityDict['emojis'][-1]['text_bytes']   += potentialEmojiBytes
+                self.partialEntityDict['emojis'][-1]['text_string']  += potentialEmojiBytes.decode()
+                self.partialEntityDict['emojis'][-1]['text_unicode'] += ' ' + potentialEmojiUnicode
+                #
+                #Indizes aktualisieren
+                try:
+                    #versuchen das zweite 'indices'-Element der Liste mit dem richtigen 
+                    #Index zu versehen. 'indices'-Liste hat ein start und ein stop Element
+                    self.partialEntityDict['emojis'][-1]['indices'][1] = Index
+                except IndexError:
+                    #wenn die Liste aber bislang nur 1 Element lang ist wird ein IndexError kommen
+                    self.partialEntityDict['emojis'][-1]['indices'].append(Index)
         
         def _createNewEmojiEntity(potentialEmojiBytes, potentialEmojiUnicode, Index):
             """
