@@ -7,12 +7,17 @@
 import json
 import re
 import requests
+import urllib.parse
 
 
 class emojiParser():
     
-    def __init__(self, unicodeEmojiVersion=12.1):
+    def __init__(self, unicodeEmojiVersion='latest'):#12.1):
         """
+        input ist uniCodeEmojiVersion entweder als string 'latest'
+        --> dann zieht er sich automatisch die aktuellste Version
+        oder du gibst eine emojiVersion als float ein mit einer Dezimalstelle, zB 12.1
+        --> dann lädt er die spezifizierte Version runter
         """
         
         def loadEmojiTable():
@@ -241,7 +246,20 @@ class emojiParser():
 
         
         
-        self.unicodeEmojiVersion = unicodeEmojiVersion
+        if unicodeEmojiVersion == 'latest':
+            res = requests.get('https://unicode.org/Public/emoji/latest')
+            #url = 'https://unicode.org/Public/emoji/12.1'
+            url = res.url
+            #path = '/Public/emoji/12.1'
+            path = urllib.parse.urlparse(url).path
+            path = path.replace('/', ' ')
+            #path = ['Public', 'emoji', '12.1']
+            path = path.split()
+            #self.unicodeEmojiVersion = 12.1
+            self.unicodeEmojiVersion = eval(path[-1])
+            print('latest emojiVersion is {}'.format(self.unicodeEmojiVersion))
+        else:
+            self.unicodeEmojiVersion = unicodeEmojiVersion
         
         self.CODE_POINTS     = loadTableList()
         self.KEYBOARD_EMOJIS = loadKeyboardDictionary()
@@ -449,10 +467,13 @@ class emojiParser():
 
 if __name__ == '__main__':
     
-    emojiParser = emojiParser(unicodeEmojiVersion=12.1)
     
-    string = 'this parser makes life soo much easier ✌️ 👨🏼‍🦱 👩🏾‍🦰 😂      '
-    emojiParser.parseStringObject(string)
+    emojiParser = emojiParser(unicodeEmojiVersion='latest')
+    
+    
+    emojisInString = emojiParser.parseStringObject(
+            'this parser extracts emojis out of strings ✌️ 👨🏼‍🦱 👩🏾‍🦰       '
+            )
     
     elonsTweet = {
             'created_at': 'Fri Jan 10 09:57:08 +0000 2020',
