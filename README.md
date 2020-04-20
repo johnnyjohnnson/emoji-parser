@@ -6,7 +6,7 @@ this Emoji Parser takes a string or a Tweet-object as input and extracts all emo
 from emojiParserModul import emojiParser
 
 emojiParser = emojiParser()
-#it defaults to the latest Emoji-Unicode-Version as of right now --> 12.1
+#it defaults to the latest Emoji-Unicode-Version as of right now --> 13.0
 emojiParser.parseStringObject('this parser extracts emojis out of strings ✌️ 👨🏼‍🦱 👩🏾‍🦰 😂')
 ```
 
@@ -92,7 +92,7 @@ elonsTweet = {
 
 
 emojiParser = emojiParser() 
-#it defaults to the latest Emoji-Unicode-Version as of right now --> 12.1
+#it defaults to the latest Emoji-Unicode-Version as of right now --> 13.0
 emojiParser.parseTweetObject(elonsTweet)
 ```
 
