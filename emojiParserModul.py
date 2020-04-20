@@ -266,10 +266,8 @@ class emojiParser():
             path = path.split()
             #self.unicodeEmojiVersion = 12.1
             self.unicodeEmojiVersion = eval(path[-1])
-            print('latest emojiVersion is {}'.format(self.unicodeEmojiVersion))
         else:
             self.unicodeEmojiVersion = eval(unicodeEmojiVersion)
-            print('you are using emojiVersion {}'.format(self.unicodeEmojiVersion))
         
         self.CODE_POINTS     = loadTableList()
         self.KEYBOARD_EMOJIS = loadKeyboardDictionary()
