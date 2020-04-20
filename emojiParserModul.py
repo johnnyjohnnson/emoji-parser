@@ -12,7 +12,7 @@ import urllib.parse
 
 class emojiParser():
     
-    def __init__(self, unicodeEmojiVersion='latest'):#12.1):
+    def __init__(self, unicodeEmojiVersion='latest'):#'12.1'):#
         """
         input ist uniCodeEmojiVersion entweder als string 'latest'
         --> dann zieht er sich automatisch die aktuellste Version
@@ -84,10 +84,15 @@ class emojiParser():
             
             returned wird nichts, geladene Datei wird auf Festplatte abgespeichert
             """
-            
-            res = requests.get(
-                    'https://unicode.org/Public/emoji/{}/emoji-data.txt'.format(self.unicodeEmojiVersion)
-                    )
+            if self.unicodeEmojiVersion < 13:
+                res = requests.get(
+                        'https://unicode.org/Public/emoji/{}/emoji-data.txt'.format(self.unicodeEmojiVersion)
+                        )
+            elif str(self.unicodeEmojiVersion) == '13.0':
+                #mit der Version 13.0 haben die Freunde den Dateinamen von emoji-data.txt in emoji-sequences.txt geändert
+                res = requests.get(
+                        'https://unicode.org/Public/emoji/{}/emoji-sequences.txt'.format(self.unicodeEmojiVersion)
+                        )
             
             if res.status_code == 200:
                 #save successfully downloaded data to disk
@@ -153,10 +158,14 @@ class emojiParser():
                     #sehen sie am Anfang so aus "0023". gemeint ist aber eigentlich "23"
                     #deswegen -->lstrip('0')
                     codePoint = codePoint.lstrip('0')
+                    #kann auch vorkommen das Bytes mit Leerzeichen vorkommen, z.B. 'A9 FE0F'
+                    #das muss weg, also replacen
+                    codePoint = codePoint.replace(' ' , '')
                     #codePoint = '23' oder '1F21A', oder '1F232..1F23A'
                     #deswegen muss codePoint nochmal wegen der '..' gesplittet werden
                     #codePoint = ['23'] oder ['1F232', '1F23A']
                     codePoint = codePoint.split('..')
+                    
                     if len(codePoint) > 1:
                         #dann war codePoint.split('..') erfolgreich und es resultiert ein StartWert
                         # in der Liste, z.B. '30' und ein EndWert z.B. '0039'
@@ -259,7 +268,8 @@ class emojiParser():
             self.unicodeEmojiVersion = eval(path[-1])
             print('latest emojiVersion is {}'.format(self.unicodeEmojiVersion))
         else:
-            self.unicodeEmojiVersion = unicodeEmojiVersion
+            self.unicodeEmojiVersion = eval(unicodeEmojiVersion)
+            print('you are using emojiVersion {}'.format(self.unicodeEmojiVersion))
         
         self.CODE_POINTS     = loadTableList()
         self.KEYBOARD_EMOJIS = loadKeyboardDictionary()
@@ -343,6 +353,11 @@ class emojiParser():
                 #der Key im self.KEYBOARD_EMOJIS existiert nicht, das bedeutet der Tweet enthält
                 #emojis, die so nicht existieren, zB das hier würde als EIN Emoji erkannt,
                 #was aber nicht existiert: 🖋️🙂 aber durch den VS nach dem Pen dieses Verhalten auslöst  
+                #also muss ein neues Emoji in das self.partialEntityDict eingefügt werden
+                _createNewEmojiEntity(potentialEmojiBytes, '0x' + potentialEmojiUnicode, Index)
+            except IndexError:
+                #das passiert wenn die Leute sogenannte "Patches" verwenden als ein Stand-alone Smiley...
+                #(also Emojis die zB smileys schwarz oder gelb machen)
                 #also muss ein neues Emoji in das self.partialEntityDict eingefügt werden
                 _createNewEmojiEntity(potentialEmojiBytes, '0x' + potentialEmojiUnicode, Index)
             else:
@@ -468,7 +483,7 @@ class emojiParser():
 if __name__ == '__main__':
     
     
-    emojiParser = emojiParser(unicodeEmojiVersion='latest')
+    emojiParser = emojiParser(unicodeEmojiVersion='latest')#'12.1')
     
     
     emojisInString = emojiParser.parseStringObject(
